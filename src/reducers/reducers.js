@@ -5,7 +5,8 @@ const InitialState = {
     data: {
         userList: null,
         isUserLoading: false,
-        error: false
+        error: false,
+        showRepos: null
     }
 };
 
@@ -33,6 +34,14 @@ export default function takeApp(state = InitialState, action) {
                 data: {
                     ...state.data,
                     error: action.payload.error
+                }
+            };
+            case 'SHOW_REPOS_NAME':
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    showRepos: action.payload.showRepos
                 }
             };
         default:

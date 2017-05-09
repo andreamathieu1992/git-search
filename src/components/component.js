@@ -3,14 +3,19 @@ import React, { Component } from 'react';
 export default class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            value: ''
+            //showRepos: this.props.data
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value }
+            // this.setState({ showRepos: event.target.showRepos })
+        );
     }
 
     handleSubmit(event) {
@@ -22,16 +27,15 @@ export default class Search extends Component {
         return (
             <div>
                 <form
-                    onSubmit = {this.handleSubmit}>
+                    onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Insert user :" value={this.state.value} onChange={this.handleChange} />
                     <input type="submit" value="Search" />
                 </form>
                 <div>
-                    <ul>
-                        <li>
-                            {this.props.data.userList}
-                        </li>
-                    </ul>
+                    <p>
+                        Dati utente:
+                            {JSON.stringify(this.props.data.userList, null, '\t')}
+                    </p>
                 </div>
             </div>
         );
